@@ -6,10 +6,12 @@ import Login from "./Components/Auth/Login";
 import Register from "./Components/Auth/Register";
 import AuthUser from "./Components/AuthUser";
 import Friends from "./Components/Friends";
+import Requests from "./Components/Requests";
+import Search from "./Components/Search";
+import Profile from "./Components/Profile";
+import User from "./Components/User";
 
 function App() {
-
-  const {getToken} = AuthUser();
 
   return (
     <div className="App">
@@ -20,6 +22,10 @@ function App() {
           <Route path='/login' element={<Login />}/>
           <Route path='/register' element={<Register />}/>
           <Route path='/friends' element={<Friends />}/>
+          <Route path='/search' element={<Search />}/>
+          <Route path='/requests' element={<Requests />}/>
+          <Route path='/profile' element={<Profile />}/>
+          <Route path='/user/:id' element={<User />}/>
         </Routes>
         
       </div>

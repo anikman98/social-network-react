@@ -7,7 +7,7 @@ import AuthUser from './AuthUser';
 
 const Navbar = () => {
 
-  const {getToken,token,logout} = AuthUser();
+  const {getToken,token,logout,user} = AuthUser();
 
     const logoutUser = () => {
         if(token != undefined){
@@ -23,40 +23,37 @@ const Navbar = () => {
             <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-                </li>
-                {
-                  getToken() 
-                  ? <>
-                    <li className="nav-item">
-                     <Link className="nav-link" to="/friends">Friends</Link>
-                    </li> 
-                    <li className="nav-item">
-                      <span role="button" className="nav-link" onClick={logoutUser}>Logout</span>
-                    </li>
-                  </>
-                  :
-                  <>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/login">Login</Link>
-                    </li>
-                    <li className="nav-item">
-                      <Link className="nav-link" to="/register">Register</Link>
-                    </li>
-                  </>
-                }
-            </ul>
-            {
-              getToken() 
-              ? ""
-                // <form className="d-flex">
-                //   <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                //   <button className="btn btn-outline-success" type="submit">Search</button>
-                // </form>
-              : <></>
-            }
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li className="nav-item">
+                    <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                  </li>
+                  {
+                    getToken() 
+                    ? <>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/friends">Friends</Link>
+                      </li> 
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/search">Search</Link>
+                      </li> 
+                      <li className="nav-item">
+                        <Link className='nav-link' to='/profile'>{user.username}</Link>
+                      </li>
+                      <li className="nav-item">
+                        <span role="button" className="nav-link" onClick={logoutUser}>Logout</span>
+                      </li>
+                    </>
+                    :
+                    <>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/login">Login</Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link className="nav-link" to="/register">Register</Link>
+                      </li>
+                    </>
+                  }
+              </ul>
             </div>  
         </div>
     </nav>
